@@ -1,0 +1,388 @@
+/* Paleta de Cores Thiely Store:
+   #E57373 - Rosa Suave (Principal)
+   #FFCDD2 - Rosa Claro/Pêssego (Fundo)
+   #FFFFFF - Branco Puro
+   #4A148C - Roxo Escuro (Contraste)
+   #880E4F - Pink Escuro (Destaques)
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    background-color: #FFCDD2; /* Rosa Claro/Pêssego */
+    color: #333333;
+    line-height: 1.6;
+}
+
+/* --- HEADER e NAVEGAÇÃO --- */
+header {
+    background-color: #E57373; /* Rosa Suave Principal */
+    color: white;
+    padding: 20px 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif; /* Fonte elegante */
+    font-size: 2.8em;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#toggle-cart {
+    background-color: #880E4F; /* Pink Escuro */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+    transition: background-color 0.3s, transform 0.2s;
+    font-weight: 500;
+}
+
+#toggle-cart:hover {
+    background-color: #4A148C; /* Roxo Escuro */
+    transform: scale(1.05);
+}
+
+/* --- LAYOUT PRINCIPAL --- */
+main {
+    display: flex;
+    padding: 30px 5%;
+}
+
+.categories {
+    flex: 0 0 220px;
+    margin-right: 30px;
+    background-color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+    height: fit-content;
+    position: sticky;
+    top: 30px;
+}
+
+.categories h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    border-bottom: 1px solid #FFCDD2;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    color: #E57373;
+}
+
+.categories ul {
+    list-style: none;
+    padding: 0; /* Correção: Garantir que a lista não tenha padding */
+}
+
+.categories ul li {
+    margin-bottom: 8px;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    color: #333333;
+    padding: 8px 10px;
+    cursor: pointer;
+    font-size: 1em;
+    border-radius: 5px;
+    transition: background-color 0.2s, color 0.2s;
+    width: 100%;
+    text-align: left;
+}
+
+.filter-btn:hover, .filter-btn.active {
+    background-color: #FFCDD2;
+    color: #880E4F;
+    font-weight: 500;
+}
+
+.products-container {
+    flex-grow: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+/* --- CARD DO PRODUTO --- */
+.product-card {
+    background-color: #FFFFFF; 
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+    text-align: center;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.product-info {
+    padding: 20px;
+}
+
+.product-info h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4em;
+    margin-bottom: 5px;
+    color: #880E4F; /* Pink Escuro para destaque */
+}
+
+.product-price {
+    font-size: 1.6em;
+    font-weight: 700;
+    color: #4A148C; /* Roxo para preço */
+    margin-bottom: 15px;
+}
+
+.add-to-cart-btn {
+    background-color: #E57373;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.3s;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #B71C1C;
+}
+
+/* --- SACOLA LATERAL --- */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 380px;
+    height: 100%;
+    background-color: #FFFFFF;
+    box-shadow: -5px 0 20px rgba(0, 0, 0, 0.25);
+    transform: translateX(100%);
+    transition: transform 0.4s ease-in-out;
+    padding: 25px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.cart-sidebar.open {
+    transform: translateX(0);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 2em;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    color: #E57373; /* Cor do botão de fechar */
+}
+
+.cart-sidebar h2 {
+    font-family: 'Playfair Display', serif;
+    color: #E57373;
+    border-bottom: 2px solid #FFCDD2;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px dashed #eee;
+}
+
+.cart-item .name {
+    font-weight: 600;
+}
+
+.remove-item-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cart-summary {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 2px solid #E57373;
+    font-size: 1.3em;
+    font-weight: 700;
+}
+
+.payment-options .payment-notice {
+    margin-top: 15px;
+    font-weight: 500;
+    color: #880E4F;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 15px;
+    border-radius: 30px;
+    font-weight: 600;
+    margin-top: 10px; /* Adicionado para espaçamento */
+}
+
+.checkout-btn.pix {
+    background-color: #008000; /* Verde Pix */
+}
+
+.checkout-btn.cartao {
+    background-color: #4A148C; /* Roxo para Cartão */
+}
+
+.checkout-btn:hover {
+    opacity: 0.85;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #4A148C;
+    color: #FFCDD2;
+    text-align: center;
+    padding: 20px;
+    font-size: 1em;
+}
+
+footer a {
+    color: #FFCDD2;
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* --- ADMIN PAGE STYLES --- */
+
+.admin-body {
+    background-color: #FFCDD2; 
+}
+
+#admin-login, #add-product-section {
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #FFFFFF; 
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+}
+
+.admin-form label {
+    font-weight: 600;
+    color: #333333;
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+.admin-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #E57373;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.admin-action-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    font-size: 1.1em;
+    color: white;
+    background-color: #E57373;
+    transition: background-color 0.3s;
+}
+
+.admin-action-btn:hover {
+    background-color: #B71C1C;
+}
+
+.admin-action-btn.logout {
+    background-color: #880E4F;
+    width: auto;
+    float: right;
+    margin-top: 0;
+}
+
+.admin-action-btn.success {
+    background-color: #008000;
+}
+
+/* Mensagens */
+.error-message {
+    color: #dc3545;
+    font-weight: 600; /* Adicionado */
+}
+
+.success-message {
+    color: #008000;
+    font-weight: 600; /* Adicionado */
+}
+
+/* Lista de Produtos Admin */
+.product-list-admin {
+    list-style: none;
+    padding: 0;
+}
+
+.product-list-admin li {
+    background-color: #FFCDD2;
+    padding: 10px;
+    border: 1px solid #E57373;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.product-list-admin li button {
+    background-color: #880E4F;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.product-list-admin li button:hover {
+    background-color: #4A148C;
+}

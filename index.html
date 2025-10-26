@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiely Store - Moda Feminina Elegante</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header>
+        <h1>Thiely Store</h1>
+        <button id="toggle-cart" title="Ver Sacola"><i class="fas fa-shopping-bag"></i> (<span id="cart-count">0</span>)</button>
+    </header>
+
+    <main>
+        <aside class="categories">
+            <h2>Compre por Categoria</h2>
+            <ul>
+                </ul>
+        </aside>
+
+        <section class="products-container" id="products-container">
+            </section>
+    </main>
+
+    <div id="cart-sidebar" class="cart-sidebar">
+        <button id="close-cart" class="close-btn">&times;</button>
+        <h2>Sua Sacola</h2>
+        <div id="cart-items">
+            <p id="empty-cart-message">Sua sacola está vazia. Adicione um look!</p>
+        </div>
+        <div class="cart-summary">
+            <p>Total: R$ <span id="cart-total">0.00</span></p>
+        </div>
+        <div class="payment-options">
+            <p class="payment-notice">Escolha a forma de pagamento (Simulação):</p>
+            <button class="checkout-btn pix" onclick="iniciarCheckout('Pix')">Pagar com PIX</button>
+            <button class="checkout-btn cartao" onclick="iniciarCheckout('Cartão')">Pagar com Cartão</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Thiely Store. Feito para você brilhar. | <a href="admin.html">Acesso Admin</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

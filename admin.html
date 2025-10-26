@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thiely Store - Área de Administração</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="admin-body">
+
+    <header>
+        <h1>Thiely Store - Painel Admin</h1>
+        <a href="index.html" style="color: white; text-decoration: none; font-weight: 600;">Voltar para a Loja</a>
+    </header>
+
+    <section id="admin-login">
+        <h2>Login de Administrador</h2>
+        <form id="login-form" class="admin-form">
+            <label for="username">Usuário:</label>
+            <input type="text" id="username" required>
+            
+            <label for="password">Senha:</label>
+            <input type="password" id="password" required>
+            
+            <button type="submit" class="admin-action-btn">Entrar</button>
+            <p id="login-message" class="error-message"></p>
+        </form>
+    </section>
+
+    <section id="add-product-section" style="display:none;">
+        <div class="admin-controls">
+            <h2>Adicionar Novo Look</h2>
+            <button id="logout-btn" class="admin-action-btn logout">Sair</button>
+        </div>
+        
+        <form id="add-product-form" class="admin-form">
+            <label for="product-name">Nome do Produto:</label>
+            <input type="text" id="product-name" required>
+
+            <label for="product-price">Preço (Ex: 129.90):</label>
+            <input type="number" id="product-price" step="0.01" min="0.01" required>
+
+            <label for="product-category">Categoria (Ex: calcas, vestidos):</label>
+            <input type="text" id="product-category" placeholder="Use letras minúsculas e hífen" required>
+            
+            <label for="product-image-file">Anexar Imagem (.jpeg, .png):</label>
+            <input type="file" id="product-image-file" accept="image/jpeg, image/png" required>
+
+            <button type="submit" class="admin-action-btn success">Adicionar Produto</button>
+            <p id="add-message" class="success-message"></p>
+            <p class="error-message" style="margin-top: 20px;">*Atenção: A imagem é salva no seu navegador (Base64). Limpar o cache pode apagar os produtos.</p>
+        </form>
+
+        <h3>Produtos Atuais</h3>
+        <ul id="current-products-list" class="product-list-admin">
+            </ul>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
